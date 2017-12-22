@@ -7,94 +7,54 @@
 	<head>
 		<xsl:text disable-output-escaping="yes"><![CDATA[
 		<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Atom Feed (Styled)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atom Feed (Styled)</title>
 
-    <link rel="stylesheet" type="text/css" href="https://phlow.github.io/feeling-responsive/assets/css/styles_feeling_responsive.css">
+    <link rel="stylesheet" type="text/css" href="http://antoyo.github.io/tql-website/assets/css/styles_feeling_responsive.css">
 
-  
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
+    
 
-	<script src="https://phlow.github.io/feeling-responsive/assets/js/modernizr.min.js"></script>
+    <script src="http://antoyo.github.io/tql-website/assets/js/modernizr.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-	<script>
-		WebFont.load({
-			google: {
-				families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
-			}
-		});
-	</script>
-
-	<noscript>
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CVolkhov' rel='stylesheet' type='text/css'>
-	</noscript>
+    <!-- Search Engine Optimization -->
+    <meta name="description" content="TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time">
+    
+    <link rel="canonical" href="http://antoyo.github.io/tql-website/assets/xslt/atom.xslt">
 
 
-	<!-- Search Engine Optimization -->
-	<meta name="description" content="»Feeling Responsive« is a responsive theme for Jekyll based on the fabulous foundation framework with beautiful typography and a bright color palette.">
-	<meta name="google-site-verification" content="Vk0IOJ2jwG_qEoG7fuEXYqv0m2rLa8P778Fi_GrsgEQ">
-	<meta name="msvalidate.01" content="0FB4C028ABCF07C908C54386ABD2D97F" >
-	
-	<link rel="author" href="https://plus.google.com/u/0/118311555303973066167">
-	
-	
-	<link rel="canonical" href="https://phlow.github.io/feeling-responsive/assets/xslt/atom.xslt">
+    <link type="text/plain" rel="author" href="http://antoyo.github.io/tql-website/humans.txt">
 
+    
 
-	<!-- Facebook Open Graph -->
-	<meta property="og:title" content="Atom Feed (Styled)">
-	<meta property="og:description" content="»Feeling Responsive« is a responsive theme for Jekyll based on the fabulous foundation framework with beautiful typography and a bright color palette.">
-	<meta property="og:url" content="https://phlow.github.io/feeling-responsive/assets/xslt/atom.xslt">
-	<meta property="og:locale" content="en_EN">
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="Feeling Responsive">
-	
-	<meta property="article:author" content="https://www.facebook.com/phlow.media">
+	<link rel="icon" sizes="32x32" href="http://antoyo.github.io/tql-website/assets/img/favicon-32x32.png">
 
+	<link rel="icon" sizes="192x192" href="http://antoyo.github.io/tql-website/assets/img/touch-icon-192x192.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-180x180-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-152x152-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-144x144-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-120x120-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-114x114-precomposed.png">
 
 	
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="phlow">
-	<meta name="twitter:creator" content="phlow">
-	<meta name="twitter:title" content="Atom Feed (Styled)">
-	<meta name="twitter:description" content="»Feeling Responsive« is a responsive theme for Jekyll based on the fabulous foundation framework with beautiful typography and a bright color palette.">
-	
-	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-76x76-precomposed.png">
 
-	<link type="text/plain" rel="author" href="https://phlow.github.io/feeling-responsive/humans.txt">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-72x72-precomposed.png">
 
-	
+	<link rel="apple-touch-icon-precomposed" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-precomposed.png">	
 
-	
-
-	<link rel="icon" sizes="32x32" href="https://phlow.github.io/feeling-responsive/assets/img/favicon-32x32.png">
-
-	<link rel="icon" sizes="192x192" href="https://phlow.github.io/feeling-responsive/assets/img/touch-icon-192x192.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-180x180-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-152x152-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-144x144-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-120x120-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-114x114-precomposed.png">
-
-	
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-76x76-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-72x72-precomposed.png">
-
-	<link rel="apple-touch-icon-precomposed" href="https://phlow.github.io/feeling-responsive/assets/img/apple-touch-icon-precomposed.png">	
-
-	<meta name="msapplication-TileImage" content="https://phlow.github.io/feeling-responsive/assets/img/msapplication_tileimage.png">
+	<meta name="msapplication-TileImage" content="http://antoyo.github.io/tql-website/assets/img/msapplication_tileimage.png">
 
 	<meta name="msapplication-TileColor" content="#fabb00">
 
 
-	
+    
 
 		]]></xsl:text>
 	</head>
@@ -105,7 +65,7 @@
   <nav class="top-bar" role="navigation" data-topbar>
     <ul class="title-area">
       <li class="name">
-      <h1 class="show-for-small-only"><a href="https://phlow.github.io/feeling-responsive" class="icon-tree"> Feeling Responsive</a></h1>
+      <h1 class="show-for-small-only"><a href="http://antoyo.github.io/tql-website" class="icon-tree"> TQL</a></h1>
     </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Nav</span></a></li>
@@ -143,36 +103,10 @@
 
           
           
-        
-
-              
-
-          
-          
-        
-
-              
-
-          
-          
             
             
               <li class="divider"></li>
-              <li><a  href="https://phlow.github.io/feeling-responsive/search/">Search</a></li>
-
-            
-            
-          
-        
-
-              
-
-          
-          
-            
-            
-              <li class="divider"></li>
-              <li><a  href="https://phlow.github.io/feeling-responsive/contact/">Contact</a></li>
+              <li><a  href="http://antoyo.github.io/tql-website/search/">Search</a></li>
 
             
             
@@ -191,7 +125,7 @@
 
             
             
-              <li><a  href="https://phlow.github.io/feeling-responsive/">Start</a></li>
+              <li><a  href="http://antoyo.github.io/tql-website/">Start</a></li>
               <li class="divider"></li>
 
             
@@ -206,7 +140,22 @@
 
             
             
-              <li><a  href="https://phlow.github.io/feeling-responsive/getting-started/">Getting Started</a></li>
+              <li><a  href="http://antoyo.github.io/tql-website/getting-started/">Getting Started</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a  href="http://antoyo.github.io/tql-website/documentation/">Documentation</a></li>
               <li class="divider"></li>
 
             
@@ -223,184 +172,20 @@
             
 
               <li class="has-dropdown">
-                <a  href="https://phlow.github.io/feeling-responsive/design/">Templates</a>
+                <a  href="http://antoyo.github.io/tql-website/blog/">Blog</a>
 
                   <ul class="dropdown">
                     
 
                       
 
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/grid/">Grid &amp; Colors</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/typography/typography/">Typography</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/page/">Page/Post</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/post-left-sidebar/">Post-Left-Sidebar</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/post-right-sidebar/">Post-Right-Sidebar</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/page-fullwidth/">Page Full-Width</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/blog/">Blog-Page</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/video/">Video</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/gallery/">Gallery</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/portfolio/">Portfolio</a></li>
+                      <li><a  href="http://antoyo.github.io/tql-website/blog/archive/">Blog Archive</a></li>
                     
                   </ul>
 
               </li>
               <li class="divider"></li>
             
-          
-        
-
-              
-
-          
-          
-
-            
-            
-
-              <li class="has-dropdown">
-                <a  href="https://phlow.github.io/feeling-responsive/headers/">Header Styles</a>
-
-                  <ul class="dropdown">
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/header-full-width-image/">Header with Full-Width-Image</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/header-image-pattern/">Header with Image and Pattern</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/header-image-color/">Header with image and color</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/header-logo-only/">Header Only With Logo</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/header-with-text/">Header With Text</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/no-header/">No Header</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/design/no-header-but-image/">No Header but Image</a></li>
-                    
-                  </ul>
-
-              </li>
-              <li class="divider"></li>
-            
-          
-        
-
-              
-
-          
-          
-
-            
-            
-
-              <li class="has-dropdown">
-                <a  href="https://phlow.github.io/feeling-responsive/documentation/">Documentation</a>
-
-                  <ul class="dropdown">
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/changelog/">Changelog</a></li>
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/roadmap/">Roadmap</a></li>
-                    
-                  </ul>
-
-              </li>
-              <li class="divider"></li>
-            
-          
-        
-
-              
-
-          
-          
-
-            
-            
-
-              <li class="has-dropdown">
-                <a  href="https://phlow.github.io/feeling-responsive/blog/">Blog</a>
-
-                  <ul class="dropdown">
-                    
-
-                      
-
-                      <li><a  href="https://phlow.github.io/feeling-responsive/blog/archive/">Blog Archive</a></li>
-                    
-                  </ul>
-
-              </li>
-              <li class="divider"></li>
-            
-          
-        
-
-              
-
-          
           
         
 
@@ -420,8 +205,8 @@
 <div id="masthead-no-image-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<a id="logo" href="https://phlow.github.io/feeling-responsive/" title="Feeling Responsive – A Flexible Theme for Jekyll">
-				<img src="https://phlow.github.io/feeling-responsive/assets/img/logo.png" alt="Feeling Responsive – A Flexible Theme for Jekyll">
+			<a id="logo" href="http://antoyo.github.io/tql-website/" title="TQL – An easy-to-use ORM from Rust">
+				<img src="http://antoyo.github.io/tql-website/assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
 			</a>
 		</div><!-- /.small-12.columns -->
 	</div><!-- /.row -->
@@ -498,8 +283,8 @@
             <h5 class="shadow-black">About This Site</h5>
 
             <p class="shadow-black">
-              »Feeling Responsive« is a responsive theme for Jekyll based on the fabulous foundation framework with beautiful typography and a bright color palette.
-              <a href="https://phlow.github.io/feeling-responsive/info/">More ›</a>
+              TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time
+              <a href="http://antoyo.github.io/tql-website/info/">More ›</a>
             </p>
           </div><!-- /.large-6.columns -->
 
@@ -516,34 +301,27 @@
             
               
             
-              
-            
 
               <ul class="no-bullet shadow-black">
               
                 
                   <li >
-                    <a href="https://phlow.github.io/feeling-responsive"  title=""></a>
+                    <a href="http://antoyo.github.io/tql-website"  title=""></a>
                   </li>
               
                 
                   <li >
-                    <a href="https://phlow.github.io/feeling-responsive/contact/"  title="Contact">Contact</a>
+                    <a href="http://antoyo.github.io/tql-website/feed.xml"  title="Subscribe to RSS Feed">RSS</a>
                   </li>
               
                 
                   <li >
-                    <a href="https://phlow.github.io/feeling-responsive/feed.xml"  title="Subscribe to RSS Feed">RSS</a>
+                    <a href="http://antoyo.github.io/tql-website/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
                   </li>
               
                 
                   <li >
-                    <a href="https://phlow.github.io/feeling-responsive/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
-                  </li>
-              
-                
-                  <li >
-                    <a href="https://phlow.github.io/feeling-responsive/sitemap.xml"  title="Sitemap for Google Webmaster Tools">sitemap.xml</a>
+                    <a href="http://antoyo.github.io/tql-website/sitemap.xml"  title="Sitemap for Google Webmaster Tools">sitemap.xml</a>
                   </li>
               
               </ul>
@@ -553,11 +331,7 @@
           <div class="small-6 medium-3 large-3 columns">
             
               
-                <h5 class="shadow-black">Dankeschön</h5>
-              
-            
-              
-            
+                <h5 class="shadow-black">Links</h5>
               
             
               
@@ -569,27 +343,17 @@
             
               
                 <li >
-                  <a href="https://phlow.github.io/feeling-responsive"  title=""></a>
+                  <a href="http://antoyo.github.io/tql-website"  title=""></a>
                 </li>
             
               
-                <li class="network-entypo" >
-                  <a href="http://entypo.com/" target="_blank"  title="Icons by Daniel Bruce">Icons by Daniel Bruce</a>
+                <li >
+                  <a href="https://github.com/antoyo/tql" target="_blank"  title="">GitHub</a>
                 </li>
             
               
-                <li class="services-newsletter" >
-                  <a href="http://foundation.zurb.com/" target="_blank"  title="Built on Foundation">Built on Foundation</a>
-                </li>
-            
-              
-                <li class="rss-link" >
-                  <a href="http://unsplash.com/" target="_blank"  title="Images by Unsplash">Images by Unsplash</a>
-                </li>
-            
-              
-                <li class="sitemap-link" >
-                  <a href="http://srobbin.com/jquery-plugins/backstretch/" target="_blank"  title="Using Backstretch by Scott Robbin">Using Backstretch by Scott Robbin</a>
+                <li >
+                  <a href="https://github.com/antoyo/tql" target="_blank"  title="">Gitter</a>
                 </li>
             
             </ul>
@@ -601,22 +365,10 @@
 
       <div id="subfooter">
         <nav class="row">
-          <section id="subfooter-left" class="small-12 medium-6 columns credits">
-            <p>Created with &hearts; by <a href="http://phlow.de/">Phlow</a> with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.</p>
-          </section>
-
           <section id="subfooter-right" class="small-12 medium-6 columns">
             <ul class="inline-list social-icons">
             
-              <li><a href="http://github.com/phlow" target="_blank" class="icon-github" title="Code und mehr..."></a></li>
-            
-              <li><a href="http://www.youtube.com/PhlowMedia" target="_blank" class="icon-youtube" title="Videos, Video-Anleitungen und Filme von Phlow auf YouTube"></a></li>
-            
-              <li><a href="http://twitter.com/phlow" target="_blank" class="icon-twitter" title="Immer das Neuste von Phlow gibt es auf Twitter"></a></li>
-            
-              <li><a href="http://www.mixcloud.com/phlow/" target="_blank" class="icon-cloud" title="Mixe, was sonst?"></a></li>
-            
-              <li><a href="https://plus.google.com/u/0/+Phlow" target="_blank" class="icon-googleplus" title="YouTube Google+"></a></li>
+              <li><a href="http://github.com/antoyo/tql" target="_blank" class="icon-github" title="TQL"></a></li>
             
             </ul>
           </section>
@@ -624,28 +376,7 @@
       </div><!-- /#subfooter -->
     </footer>
 
-		
-
-
-<script src="https://phlow.github.io/feeling-responsive/assets/js/javascript.min.js"></script>
-
-
-
-
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-60112281-1', 'auto');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-
-</script>
+		<script src="http://antoyo.github.io/tql-website/assets/js/javascript.min.js"></script>
 
 
 

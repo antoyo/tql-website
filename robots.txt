@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://phlow.github.io/feeling-responsive/sitemap.xml
+Sitemap: http://antoyo.github.io/tql-website/sitemap.xml
