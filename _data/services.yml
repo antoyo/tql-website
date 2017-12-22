@@ -1,4 +1,4 @@
-- menu_name: "Services"
+- menu_name: "News Feed"
 
 - name: "RSS"
   url: "/feed.xml"
@@ -7,7 +7,3 @@
 - name: "Atom"
   url: "/atom.xml"
   title: "Subscribe to Atom Feed"
-
-- name: "sitemap.xml"
-  url: "/sitemap.xml"
-  title: "Sitemap for Google Webmaster Tools"
