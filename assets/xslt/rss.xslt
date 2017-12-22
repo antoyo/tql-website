@@ -378,13 +378,6 @@
 
 		<script src="http://antoyo.github.io/tql-website/assets/js/javascript.min.js"></script>
 
-
-
-
-
-
-
-
 		]]></xsl:text>
 	</body>
 	</html>
