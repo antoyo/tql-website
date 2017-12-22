@@ -20,8 +20,6 @@ header:
 
 
 <div class="medium-8 medium-pull-4 columns" markdown="1">
-{% include _improve_content.html %}
-
 ## Edit Navigation   {#edit-navigation}
 
 To customize the navigation of *Feeling Responsive*, you have to open the [YAML](https://jekyllrb.com/docs/datafiles/)-file `_data/navigation.yml`. Edit the data and adjust it to your own needs.
@@ -249,10 +247,6 @@ This include creates a next/previous link to a post of the same category using t
 
 If your content is on Jekyll you can use this include to automatically generate a »Edit on GitHub Link« to give people a possibility to improve your content. Got the idea from [Ben Balters Blog](http://ben.balter.com/).
 
-~~~
-{% raw %}{% include _improve_content.html %}{% endraw %}
-~~~
-
 
 ### list-collection
 
@@ -312,8 +306,6 @@ I only added one other javascript-module: [`backstretch`][3] by Scott Robbin. Th
 /foundation/bower_components/foundation/js/foundation.topbar.js'
 /foundation/js/jquery.backstretch.js'
 ~~~
-
-{% include _improve_content.html %}
 
 </div><!-- /.medium-8.columns -->
 </div><!-- /.row -->
