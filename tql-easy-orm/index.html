@@ -1,0 +1,821 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TQL, an easy-to-use ORM for Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="http://antoyo.github.io/tql-website/assets/css/styles_feeling_responsive.css">
+
+    <!-- Search Engine Optimization -->
+    <meta name="description" content="Two years after I finished my school last year project, which consisted in a compiler plugin to provide a DSL for SQL in Rust, I can finally update it to use proc-macro and benefit from the same features as the original version, while also working on the stable version of Rust!
+
+
+TQL is an ORM inspired by the Django ORM:
+it provides an easy-to-use syntax that is similar to the Django ORM.
+However, as it is implemented as a procedural macro, I improved it in some cases to get a better syntax.
+For instance, while in Django you&amp;#8217;d need something like this to use conditions and operators:
+
+
+
+Table.objects.filter(Q(field1=&amp;quot;value1&amp;quot;) | Q(field2__lt=100))
+
+
+
+In tql, you can use the normal Rust syntax:
+
+
+
+Table.filter(field1 == &amp;quot;value1&amp;quot; || field2 &amp;lt; 100)
+
+
+
+which is more convenient.
+
+
+
+
+Implementation
+
+
+All of this is possible thanks to the use of procedural macros.
+Actually, the above code should be written inside a sql!() macro like this:
+
+
+
+let items = sql!(Table.filter(field1 == &amp;quot;value1&amp;quot; || field2 &amp;lt; 100));
+
+
+
+This procedural macro will analyze the query to make sure that the fields exist and the type of the expressions match.
+It will also generate the SQL query at compile-time, so there&amp;#8217;s no run-time cost associated with creating a query.
+Thus, it is the perfect example of a zero-cost abstraction.
+
+
+
+
+Database support
+
+
+Currently, tql only supports PostgreSQL, but it will soon support Sqlite.
+Other database backends might be added in the future if people are interested.
+Also, some features of SQL are not yet supported and these will be added in the future.
+
+
+
+
+Usage
+
+
+It is very easy to use tql.
+First of all, you need to annotate your model with the #[derive(SqlTable)] attribute:
+
+
+
+#[derive(SqlTable)]
+struct TodoItem {
+    id: PrimaryKey,
+    text: String,
+    date_added: DateTime&amp;lt;Utc&amp;gt;,
+    done: bool,
+}
+
+
+
+The fields are of normal Rust types, except for PrimaryKey and ForeignKey&amp;lt;T&amp;gt;.
+Next, you can simply use the sql!() macro to execute queries.
+For instance, this will create the table in the database:
+
+
+
+sql!(TodoItem.create());
+
+
+
+This macro assumes that there&amp;#8217;s a variable named connection in scope and will use it to execute the query.
+This variable should be of type postgres::Connection.
+Let&amp;#8217;s see the other queries we can do.
+To do a SELECT query, with WHERE, ORDER BY and LIMIT clauses, we can use the methods filter(), sort() and indexing:
+
+
+
+let items = sql!(TodoItem.filter(done == false).sort(-date_added)[..10]);
+
+
+
+This will select the first 10 TodoItem, sorted from the newest date to the latest and select only the items where the field done is equal to false.
+Selecting all items can be done with TodoItem.all() and selecting one item by primary key can be done with TodoItem.get(primary_key).
+We can do even more complex queries with aggregates, for instance:
+
+
+
+Person.filter(age &amp;lt; 50).values(name)
+  .aggregate(age_average = avg(age))
+  .filter(age_average &amp;gt; 30)
+
+
+
+Of course, tql supports JOIN with the join() method.
+
+
+To update a row, simply use the update() method, optionally with some filters:
+
+
+
+sql!(TodoItem.get(id).update(done = true));
+
+
+
+Here, we set the field done to true for the row where the primary key is equal to the content of the variable id.
+
+
+Deleting rows can be done by calling the method delete():
+
+
+
+sql!(TodoItem.get(id).delete());
+
+
+
+Finally, you can insert rows with the insert() method:
+
+
+
+sql!(TodoItem.insert(text = &amp;amp;text, date_added = Utc::now(), done = false));
+
+
+
+You can find more details of the supported syntax and examples in the tql repository.
+
+
+
+
+How good are error messages?
+
+
+One issue people have with such tools in Rust is the error messages.
+For instance, here&amp;#8217;s part of a message you can get when you do a type error with diesel:
+
+
+
+error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
+  --&amp;gt; src/main.rs:69:41
+   |
+69 |         diesel::update(sql_table::table.find(&quot;id&quot;))
+   |                                         ^^^^ the trait `diesel::Expression` is not implemented for `str`
+   |
+   = note: required because of the requirements on the impl of `diesel::Expression` for `&amp;amp;str`
+   = note: required because of the requirements on the impl of `diesel::Expression` for `diesel::expression::operators::Eq&amp;lt;schema::__diesel_infer_schema::infer_sql_table::sql_table::columns::id, &amp;amp;str&amp;gt;`
+   = note: required because of the requirements on the impl of `diesel::EqAll&amp;lt;&amp;amp;str&amp;gt;` for `schema::__diesel_infer_schema::infer_sql_table::sql_table::columns::id`
+   = note: required because of the requirements on the impl of `diesel::query_dsl::filter_dsl::FindDsl&amp;lt;&amp;amp;str&amp;gt;` for `schema::__diesel_infer_schema::infer_sql_table::sql_table::table`
+
+…
+
+
+
+(there are actually 3 other error messages caused by the simple mistake of writing &quot;id&quot; instead of id)
+
+
+Here&amp;#8217;s the error message provided by tql for the very same error:
+
+
+
+error: mismatched types:
+ expected `i32`,
+    found `String`
+  --&amp;gt; src/main.rs:87:39
+   |
+87 |         let table = sql!(SqlTable.get(&quot;id&quot;)).unwrap();
+   |                                       ^^^^
+   |
+   = note: in this expansion of sql! (defined in tql)
+
+
+
+How can tql show good error messages?
+It can do that because the procedural macro is actually doing a whole semantic analysis, like a compiler would do.
+TQL will also provide help message like the Rust compiler can do:
+
+
+
+error: `SlTable` does not name an SQL table
+  --&amp;gt; src/main.rs:83:23
+   |
+83 |         let id = sql!(SlTable.insert(field1 = &amp;amp;string, field2 = number));
+   |                       ^^^^^^^
+   |
+   = help: did you mean SqlTable?
+
+
+
+Here, tql proposed a name that is similar to the one written in this example.
+
+
+This macro can even warn you when you do something dubious, like deleting your whole table:
+
+
+
+warning: delete() without filters
+  --&amp;gt; examples/todo.rs:60:32
+   |
+60 |     let result = sql!(TodoItem.delete());
+   |                                ^^^^^^
+
+
+
+Nothing is perfect, however.
+Currently, this only works on nightly and the error messages are not as precise when you use tql on the stable version of the compiler.
+However, this is not a big deal, because you can easily develop your project on nightly, and then switch to stable for your deployment since you&amp;#8217;re not supposed to have compiler errors when you&amp;#8217;re ready to deploy (and you will still see them anyway on stable).
+
+
+
+
+Optimizations
+
+
+Currently, tql support a very basic query optimization: constant propagation.
+But nothing prevents it to support other and more useful optimizations in the future.
+
+
+
+
+Future
+
+
+As I said earlier, I plan to add support for other databases to tql and more SQL features.
+Also, I will improve some rough edges like the connection management and the error handling of the generated code.
+Take note that tql is not ready for production use, it&amp;#8217;s alpha quality and not thoroughly tested (especially the stable version), so use it at your own risk.
+
+
+This version has not been published yet, because it depends on the master branch of the syn crate, but I&amp;#8217;ll publish it as soon as it is possible.
+
+
+If you want more information about tql, you can find my school report here and the slides of the talk I gave about it, both of which are in french and slightly outdated (these date back from 2015, when tql was a compiler plugin).
+(Don&amp;#8217;t be afraid by the size of the report, it contains the whole code of tql.)
+
+
+Please comment on reddit.">
+    
+    <link rel="canonical" href="http://antoyo.github.io/tql-website/tql-easy-orm/">
+
+
+    <link type="text/plain" rel="author" href="http://antoyo.github.io/tql-website/humans.txt">
+
+    
+
+	<link rel="icon" sizes="32x32" href="http://antoyo.github.io/tql-website/assets/img/favicon-32x32.png">
+
+	<link rel="icon" sizes="192x192" href="http://antoyo.github.io/tql-website/assets/img/touch-icon-192x192.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-180x180-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-152x152-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-144x144-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-120x120-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-114x114-precomposed.png">
+
+	
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-76x76-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-72x72-precomposed.png">
+
+	<link rel="apple-touch-icon-precomposed" href="http://antoyo.github.io/tql-website/assets/img/apple-touch-icon-precomposed.png">	
+
+	<meta name="msapplication-TileImage" content="http://antoyo.github.io/tql-website/assets/img/msapplication_tileimage.png">
+
+	<meta name="msapplication-TileColor" content="#fabb00">
+
+
+    
+
+    </head>
+    <body id="top-of-page" class="">
+        
+        
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="show-for-small-only"><a href="http://antoyo.github.io/tql-website" class="icon-tree"> TQL</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Nav</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="right">
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a  href="http://antoyo.github.io/tql-website/search/">Search</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a  href="http://antoyo.github.io/tql-website/">Start</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a  href="http://antoyo.github.io/tql-website/getting-started/">Getting Started</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li><a  href="http://antoyo.github.io/tql-website/documentation/">Documentation</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a  href="http://antoyo.github.io/tql-website/blog/">Blog</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a  href="http://antoyo.github.io/tql-website/blog/archive/">Blog Archive</a></li>
+                    
+                  </ul>
+
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+        
+
+        
+
+<div id="masthead-no-image-header">
+    <div class="row">
+        <div class="small-12 columns">
+            <a id="logo" href="http://antoyo.github.io/tql-website/" title="TQL – An easy-to-use ORM from Rust">
+                <img src="http://antoyo.github.io/tql-website/assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
+            </a>
+        </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+</div><!-- /#masthead -->
+
+
+
+
+
+
+
+
+
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Two years after I finished my school last year project, which consisted in a compiler plugin to provide a DSL for SQL in Rust, I can finally update it to use <code>proc-macro</code> and benefit from the same features as the original version, while also working on the stable version of Rust!</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/antoyo/tql">TQL</a> is an ORM inspired by the Django ORM:
+it provides an easy-to-use syntax that is similar to the Django ORM.
+However, as it is implemented as a procedural macro, I improved it in some cases to get a better syntax.
+For instance, while in Django you&#8217;d need something like this to use conditions and operators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="python">Table.objects.filter(Q(field1=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">value1</span><span style="color:#710">&quot;</span></span>) | Q(field2__lt=<span style="color:#00D">100</span>))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In <code>tql</code>, you can use the normal Rust syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">Table.filter(field1 == &quot;value1&quot; || field2 &lt; 100)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which is more convenient.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation">Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All of this is possible thanks to the use of procedural macros.
+Actually, the above code should be written inside a <code>sql!()</code> macro like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">let items = sql!(Table.filter(field1 == &quot;value1&quot; || field2 &lt; 100));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This procedural macro will analyze the query to make sure that the fields exist and the type of the expressions match.
+It will also generate the SQL query at compile-time, so there&#8217;s no run-time cost associated with creating a query.
+Thus, it is the perfect example of a zero-cost abstraction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="database-support">Database support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, <code>tql</code> only supports PostgreSQL, but it will soon support Sqlite.
+Other database backends might be added in the future if people are interested.
+Also, some features of SQL are not yet supported and these will be added in the future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is very easy to use <code>tql</code>.
+First of all, you need to annotate your model with the <code>#[derive(SqlTable)]</code> attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">#[derive(SqlTable)]
+struct TodoItem {
+    id: PrimaryKey,
+    text: String,
+    date_added: DateTime&lt;Utc&gt;,
+    done: bool,
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fields are of normal Rust types, except for <code>PrimaryKey</code> and <code>ForeignKey&lt;T&gt;</code>.
+Next, you can simply use the <code>sql!()</code> macro to execute queries.
+For instance, this will create the table in the database:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.create());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This macro assumes that there&#8217;s a variable named <code>connection</code> in scope and will use it to execute the query.
+This variable should be of type <code>postgres::Connection</code>.
+Let&#8217;s see the other queries we can do.
+To do a <code>SELECT</code> query, with <code>WHERE</code>, <code>ORDER BY</code> and <code>LIMIT</code> clauses, we can use the methods <code>filter()</code>, <code>sort()</code> and indexing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">let items = sql!(TodoItem.filter(done == false).sort(-date_added)[..10]);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will select the first 10 <code>TodoItem</code>, sorted from the newest date to the latest and select only the items where the field <code>done</code> is equal to <code>false</code>.
+Selecting all items can be done with <code>TodoItem.all()</code> and selecting one item by primary key can be done with <code>TodoItem.get(primary_key)</code>.
+We can do even more complex queries with aggregates, for instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">Person.filter(age &lt; 50).values(name)
+  .aggregate(age_average = avg(age))
+  .filter(age_average &gt; 30)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of course, <code>tql</code> supports <code>JOIN</code> with the <code>join()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>To update a row, simply use the <code>update()</code> method, optionally with some filters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.get(id).update(done = true));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, we set the field <code>done</code> to <code>true</code> for the row where the primary key is equal to the content of the variable <code>id</code>.</p>
+</div>
+<div class="paragraph">
+<p>Deleting rows can be done by calling the method <code>delete()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.get(id).delete());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, you can insert rows with the <code>insert()</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.insert(text = &amp;text, date_added = Utc::now(), done = false));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find more details of the supported syntax and examples in the <a href="https://github.com/antoyo/tql">tql repository</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-good-are-error-messages">How good are error messages?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One issue people have with such tools in Rust is the error messages.
+For instance, here&#8217;s part of a message you can get when you do a type error with <code>diesel</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
+  --&gt; src/main.rs:69:41
+   |
+69 |         diesel::update(sql_table::table.find("id"))
+   |                                         ^^^^ the trait `diesel::Expression` is not implemented for `str`
+   |
+   = note: required because of the requirements on the impl of `diesel::Expression` for `&amp;str`
+   = note: required because of the requirements on the impl of `diesel::Expression` for `diesel::expression::operators::Eq&lt;schema::__diesel_infer_schema::infer_sql_table::sql_table::columns::id, &amp;str&gt;`
+   = note: required because of the requirements on the impl of `diesel::EqAll&lt;&amp;str&gt;` for `schema::__diesel_infer_schema::infer_sql_table::sql_table::columns::id`
+   = note: required because of the requirements on the impl of `diesel::query_dsl::filter_dsl::FindDsl&lt;&amp;str&gt;` for `schema::__diesel_infer_schema::infer_sql_table::sql_table::table`
+
+…</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(there are actually 3 other error messages caused by the simple mistake of writing <code>"id"</code> instead of <code>id</code>)</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the error message provided by <code>tql</code> for the very same error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>error: mismatched types:
+ expected `i32`,
+    found `String`
+  --&gt; src/main.rs:87:39
+   |
+87 |         let table = sql!(SqlTable.get("id")).unwrap();
+   |                                       ^^^^
+   |
+   = note: in this expansion of sql! (defined in tql)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>How can <code>tql</code> show good error messages?
+It can do that because the procedural macro is actually doing a whole semantic analysis, like a compiler would do.
+<code>TQL</code> will also provide help message like the Rust compiler can do:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>error: `SlTable` does not name an SQL table
+  --&gt; src/main.rs:83:23
+   |
+83 |         let id = sql!(SlTable.insert(field1 = &amp;string, field2 = number));
+   |                       ^^^^^^^
+   |
+   = help: did you mean SqlTable?</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, <code>tql</code> proposed a name that is similar to the one written in this example.</p>
+</div>
+<div class="paragraph">
+<p>This macro can even warn you when you do something dubious, like deleting your whole table:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>warning: delete() without filters
+  --&gt; examples/todo.rs:60:32
+   |
+60 |     let result = sql!(TodoItem.delete());
+   |                                ^^^^^^</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing is perfect, however.
+Currently, this only works on nightly and the error messages are not as precise when you use <code>tql</code> on the stable version of the compiler.
+However, this is not a big deal, because you can easily develop your project on nightly, and then switch to stable for your deployment since you&#8217;re not supposed to have compiler errors when you&#8217;re ready to deploy (and you will still see them anyway on stable).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optimizations">Optimizations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, <code>tql</code> support a very basic query optimization: constant propagation.
+But nothing prevents it to support other and more useful optimizations in the future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future">Future</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As I said earlier, I plan to add support for other databases to <code>tql</code> and more SQL features.
+Also, I will improve some rough edges like the connection management and the error handling of the generated code.
+Take note that <code>tql</code> is not ready for production use, it&#8217;s alpha quality and not thoroughly tested (especially the stable version), so use it at your own risk.</p>
+</div>
+<div class="paragraph">
+<p>This version has not been published yet, because it depends on the master branch of the <code>syn</code> crate, but I&#8217;ll publish it as soon as it is possible.</p>
+</div>
+<div class="paragraph">
+<p>If you want more information about <code>tql</code>, you can find <a href="http://antoyo.ml/rapport_tql.pdf">my school report here</a> and <a href="http://tql.tuxfamily.org/presentation/">the slides of the talk I gave about it</a>, both of which are in french and slightly outdated (these date back from 2015, when <code>tql</code> was a compiler plugin).
+(Don&#8217;t be afraid by the size of the report, it contains the whole code of <code>tql</code>.)</p>
+</div>
+<div class="paragraph">
+<p>Please comment on <a href="https://www.reddit.com/r/rust/comments/7j7sc7/tql_an_easytouse_orm_for_rust/">reddit</a>.</p>
+</div>
+</div>
+</div>
+
+        
+            <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">About This Site</h5>
+
+            <p class="shadow-black">
+              TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time
+              <a href="http://antoyo.github.io/tql-website/info/">More ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+                <h5 class="shadow-black">News Feed</h5>
+              
+            
+              
+            
+              
+            
+
+              <ul class="no-bullet shadow-black">
+              
+                
+                  <li >
+                    <a href="http://antoyo.github.io/tql-website"  title=""></a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="http://antoyo.github.io/tql-website/feed.xml"  title="Subscribe to RSS Feed">RSS</a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="http://antoyo.github.io/tql-website/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
+                  </li>
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+              
+                <h5 class="shadow-black">Links</h5>
+              
+            
+              
+            
+              
+            
+
+            <ul class="no-bullet shadow-black">
+            
+              
+                <li >
+                  <a href="http://antoyo.github.io/tql-website"  title=""></a>
+                </li>
+            
+              
+                <li >
+                  <a href="https://github.com/antoyo/tql" target="_blank"  title="">GitHub</a>
+                </li>
+            
+              
+                <li >
+                  <a href="https://gitter.im/tql-rs/Lobby" target="_blank"  title="">Gitter</a>
+                </li>
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+
+      <div id="subfooter">
+        <nav class="row">
+          <section id="subfooter-left" class="small-12 medium-6 text-right columns credits">
+              Contribute on GitHub
+          </section>
+
+          <section id="subfooter-right" class="small-12 medium-6 columns">
+            <ul class="inline-list social-icons">
+            
+              <li><a href="http://github.com/antoyo/tql" class="icon-github" title="TQL"></a></li>
+            
+            </ul>
+          </section>
+        </nav>
+      </div><!-- /#subfooter -->
+    </footer>
+
+        
+    </body>
+</html>
+

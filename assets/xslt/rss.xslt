@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:output method="html" encoding="utf-8" />
-<xsl:template match="/rss">
-	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html &gt;</xsl:text>
-	<html>
-	<head>
-		<xsl:text disable-output-escaping="yes"><![CDATA[
-		<meta charset="utf-8">
+    <xsl:output method="html" encoding="utf-8" />
+    <xsl:template match="/rss">
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html &gt;</xsl:text>
+        <html>
+            <head>
+                <xsl:text disable-output-escaping="yes"><![CDATA[
+                    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS Feed (Styled)</title>
 
     <link rel="stylesheet" type="text/css" href="http://antoyo.github.io/tql-website/assets/css/styles_feeling_responsive.css">
-
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
-    
-
-    <script src="http://antoyo.github.io/tql-website/assets/js/modernizr.min.js"></script>
 
     <!-- Search Engine Optimization -->
     <meta name="description" content="TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time">
@@ -56,11 +50,11 @@
 
     
 
-		]]></xsl:text>
-	</head>
-	<body id="top-of-page">
-		<xsl:text disable-output-escaping="yes"><![CDATA[
-		
+                    ]]></xsl:text>
+            </head>
+            <body id="top-of-page">
+                <xsl:text disable-output-escaping="yes"><![CDATA[
+                    
 <div id="navigation" class="sticky">
   <nav class="top-bar" role="navigation" data-topbar>
     <ul class="title-area">
@@ -200,16 +194,16 @@
   </nav>
 </div><!-- /#navigation -->
 
-		
+                    
 
 <div id="masthead-no-image-header">
-	<div class="row">
-		<div class="small-12 columns">
-			<a id="logo" href="http://antoyo.github.io/tql-website/" title="TQL – An easy-to-use ORM from Rust">
-				<img src="http://antoyo.github.io/tql-website/assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
-			</a>
-		</div><!-- /.small-12.columns -->
-	</div><!-- /.row -->
+    <div class="row">
+        <div class="small-12 columns">
+            <a id="logo" href="http://antoyo.github.io/tql-website/" title="TQL – An easy-to-use ORM from Rust">
+                <img src="http://antoyo.github.io/tql-website/assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
+            </a>
+        </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
 </div><!-- /#masthead -->
 
 
@@ -219,7 +213,8 @@
 
 
 
-		
+
+                    
 
 
 <div class="alert-box warning text-center"><p>This <a href="https://en.wikipedia.org/wiki/RSS" target="_blank">RSS feed</a> is meant to be used by <a href="https://en.wikipedia.org/wiki/Template:Aggregators" target="_blank">RSS reader applications and websites</a>.</p>
@@ -227,8 +222,8 @@
 
 
 
-		]]></xsl:text>
-		<header class="t30 row">
+                    ]]></xsl:text>
+                <header class="t30 row">
 	<p class="subheadline"><xsl:value-of select="channel/description" disable-output-escaping="yes" /></p>
 	<h1>
 		<xsl:element name="a">
@@ -268,8 +263,8 @@
 	</xsl:for-each>
 </ul>
 
-		<xsl:text disable-output-escaping="yes"><![CDATA[
-		    <div id="up-to-top" class="row">
+                <xsl:text disable-output-escaping="yes"><![CDATA[
+                        <div id="up-to-top" class="row">
       <div class="small-12 columns" style="text-align: right;">
         <a class="iconfont" href="#top-of-page">&#xf108;</a>
       </div><!-- /.small-12.columns -->
@@ -292,9 +287,7 @@
           <div class="small-6 medium-3 large-3 large-offset-1 columns">
             
               
-                <h5 class="shadow-black">Services</h5>
-              
-            
+                <h5 class="shadow-black">News Feed</h5>
               
             
               
@@ -317,11 +310,6 @@
                 
                   <li >
                     <a href="http://antoyo.github.io/tql-website/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
-                  </li>
-              
-                
-                  <li >
-                    <a href="http://antoyo.github.io/tql-website/sitemap.xml"  title="Sitemap for Google Webmaster Tools">sitemap.xml</a>
                   </li>
               
               </ul>
@@ -353,7 +341,7 @@
             
               
                 <li >
-                  <a href="https://github.com/antoyo/tql" target="_blank"  title="">Gitter</a>
+                  <a href="https://gitter.im/tql-rs/Lobby" target="_blank"  title="">Gitter</a>
                 </li>
             
             </ul>
@@ -365,10 +353,14 @@
 
       <div id="subfooter">
         <nav class="row">
+          <section id="subfooter-left" class="small-12 medium-6 text-right columns credits">
+              Contribute on GitHub
+          </section>
+
           <section id="subfooter-right" class="small-12 medium-6 columns">
             <ul class="inline-list social-icons">
             
-              <li><a href="http://github.com/antoyo/tql" target="_blank" class="icon-github" title="TQL"></a></li>
+              <li><a href="http://github.com/antoyo/tql" class="icon-github" title="TQL"></a></li>
             
             </ul>
           </section>
@@ -376,20 +368,18 @@
       </div><!-- /#subfooter -->
     </footer>
 
-		<script src="http://antoyo.github.io/tql-website/assets/js/javascript.min.js"></script>
-
-		]]></xsl:text>
-	</body>
-	</html>
-</xsl:template>
-<xsl:template name="slugify">
-	<xsl:param name="text" select="''" />
-	<xsl:variable name="dodgyChars" select="' ,.#_-!?*:;=+|&amp;/\\'" />
-	<xsl:variable name="replacementChar" select="'-----------------'" />
-	<xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyz'" />
-	<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
-	<xsl:variable name="lowercased"><xsl:value-of select="translate( $text, $uppercase, $lowercase )" /></xsl:variable>
-	<xsl:variable name="escaped"><xsl:value-of select="translate( $lowercased, $dodgyChars, $replacementChar )" /></xsl:variable>
-	<xsl:value-of select="$escaped" />
-</xsl:template>
+                    ]]></xsl:text>
+            </body>
+        </html>
+    </xsl:template>
+    <xsl:template name="slugify">
+        <xsl:param name="text" select="''" />
+        <xsl:variable name="dodgyChars" select="' ,.#_-!?*:;=+|&amp;/\\'" />
+        <xsl:variable name="replacementChar" select="'-----------------'" />
+        <xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyz'" />
+        <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
+        <xsl:variable name="lowercased"><xsl:value-of select="translate( $text, $uppercase, $lowercase )" /></xsl:variable>
+        <xsl:variable name="escaped"><xsl:value-of select="translate( $lowercased, $dodgyChars, $replacementChar )" /></xsl:variable>
+        <xsl:value-of select="$escaped" />
+    </xsl:template>
 </xsl:stylesheet>
