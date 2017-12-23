@@ -17,6 +17,7 @@
     
     <link rel="canonical" href="http://antoyo.github.io/tql-website/assets/xslt/atom.xslt">
 
+    <link rel="stylesheet" href="/tql-website/css/asciidoc-pygments.css">
 
     <link type="text/plain" rel="author" href="http://antoyo.github.io/tql-website/humans.txt">
 
@@ -119,7 +120,7 @@
 
             
             
-              <li><a  href="http://antoyo.github.io/tql-website/">Start</a></li>
+              <li><a  href="http://antoyo.github.io/tql-website/">Index</a></li>
               <li class="divider"></li>
 
             
@@ -279,7 +280,6 @@
 
             <p class="shadow-black">
               TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time
-              <a href="http://antoyo.github.io/tql-website/info/">More ›</a>
             </p>
           </div><!-- /.large-6.columns -->
 

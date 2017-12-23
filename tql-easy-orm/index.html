@@ -258,6 +258,7 @@ Please comment on reddit.">
     
     <link rel="canonical" href="http://antoyo.github.io/tql-website/tql-easy-orm/">
 
+    <link rel="stylesheet" href="/tql-website/css/asciidoc-pygments.css">
 
     <link type="text/plain" rel="author" href="http://antoyo.github.io/tql-website/humans.txt">
 
@@ -292,7 +293,7 @@ Please comment on reddit.">
     
 
     </head>
-    <body id="top-of-page" class="">
+    <body id="top-of-page" class="page-fullwidth">
         
         
 <div id="navigation" class="sticky">
@@ -359,7 +360,7 @@ Please comment on reddit.">
 
             
             
-              <li><a  href="http://antoyo.github.io/tql-website/">Start</a></li>
+              <li><a  href="http://antoyo.github.io/tql-website/">Index</a></li>
               <li class="divider"></li>
 
             
@@ -456,7 +457,20 @@ Please comment on reddit.">
 
 
 
-        <div id="preamble">
+        
+
+
+<div class="row t30">
+	<div class="medium-12 columns">
+		<article>
+			<header>
+				
+				<h1>TQL, an easy-to-use ORM for Rust</h1>
+			</header>
+
+			
+
+			<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Two years after I finished my school last year project, which consisted in a compiler plugin to provide a DSL for SQL in Rust, I can finally update it to use <code>proc-macro</code> and benefit from the same features as the original version, while also working on the stable version of Rust!</p>
@@ -469,7 +483,7 @@ For instance, while in Django you&#8217;d need something like this to use condit
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="python">Table.objects.filter(Q(field1=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">value1</span><span style="color:#710">&quot;</span></span>) | Q(field2__lt=<span style="color:#00D">100</span>))</code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">Table</span><span class="tok-o">.</span><span class="tok-n">objects</span><span class="tok-o">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">Q</span><span class="tok-p">(</span><span class="tok-n">field1</span><span class="tok-o">=</span><span class="tok-s2">&quot;value1&quot;</span><span class="tok-p">)</span> <span class="tok-o">|</span> <span class="tok-n">Q</span><span class="tok-p">(</span><span class="tok-n">field2__lt</span><span class="tok-o">=</span><span class="tok-mi">100</span><span class="tok-p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -477,7 +491,7 @@ For instance, while in Django you&#8217;d need something like this to use condit
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">Table.filter(field1 == &quot;value1&quot; || field2 &lt; 100)</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">Table</span><span class="tok-p">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">field1</span><span class="tok-w"> </span><span class="tok-o">==</span><span class="tok-w"> </span><span class="tok-s">&quot;value1&quot;</span><span class="tok-w"> </span><span class="tok-o">||</span><span class="tok-w"> </span><span class="tok-n">field2</span><span class="tok-w"> </span><span class="tok-o">&lt;</span><span class="tok-w"> </span><span class="tok-mi">100</span><span class="tok-p">)</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -494,7 +508,7 @@ Actually, the above code should be written inside a <code>sql!()</code> macro li
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">let items = sql!(Table.filter(field1 == &quot;value1&quot; || field2 &lt; 100));</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-kd">let</span><span class="tok-w"> </span><span class="tok-n">items</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">Table</span><span class="tok-p">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">field1</span><span class="tok-w"> </span><span class="tok-o">==</span><span class="tok-w"> </span><span class="tok-s">&quot;value1&quot;</span><span class="tok-w"> </span><span class="tok-o">||</span><span class="tok-w"> </span><span class="tok-n">field2</span><span class="tok-w"> </span><span class="tok-o">&lt;</span><span class="tok-w"> </span><span class="tok-mi">100</span><span class="tok-p">));</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -523,13 +537,13 @@ First of all, you need to annotate your model with the <code>#[derive(SqlTable)]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">#[derive(SqlTable)]
-struct TodoItem {
-    id: PrimaryKey,
-    text: String,
-    date_added: DateTime&lt;Utc&gt;,
-    done: bool,
-}</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-cp">#[derive(SqlTable)]</span><span class="tok-w"></span>
+<span class="tok-k">struct</span> <span class="tok-nc">TodoItem</span><span class="tok-w"> </span><span class="tok-p">{</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-n">id</span><span class="tok-o">:</span><span class="tok-w"> </span><span class="tok-n">PrimaryKey</span><span class="tok-p">,</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-n">text</span><span class="tok-o">:</span><span class="tok-w"> </span><span class="tok-nb">String</span><span class="tok-p">,</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-n">date_added</span><span class="tok-o">:</span><span class="tok-w"> </span><span class="tok-n">DateTime</span><span class="tok-o">&lt;</span><span class="tok-n">Utc</span><span class="tok-o">&gt;</span><span class="tok-p">,</span><span class="tok-w"></span>
+<span class="tok-w">    </span><span class="tok-n">done</span><span class="tok-o">:</span><span class="tok-w"> </span><span class="tok-kt">bool</span><span class="tok-p">,</span><span class="tok-w"></span>
+<span class="tok-p">}</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -539,7 +553,7 @@ For instance, this will create the table in the database:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.create());</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">TodoItem</span><span class="tok-p">.</span><span class="tok-n">create</span><span class="tok-p">());</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -550,7 +564,7 @@ To do a <code>SELECT</code> query, with <code>WHERE</code>, <code>ORDER BY</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">let items = sql!(TodoItem.filter(done == false).sort(-date_added)[..10]);</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-kd">let</span><span class="tok-w"> </span><span class="tok-n">items</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">TodoItem</span><span class="tok-p">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">done</span><span class="tok-w"> </span><span class="tok-o">==</span><span class="tok-w"> </span><span class="tok-kc">false</span><span class="tok-p">).</span><span class="tok-n">sort</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-n">date_added</span><span class="tok-p">)[..</span><span class="tok-mi">10</span><span class="tok-p">]);</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -560,9 +574,9 @@ We can do even more complex queries with aggregates, for instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">Person.filter(age &lt; 50).values(name)
-  .aggregate(age_average = avg(age))
-  .filter(age_average &gt; 30)</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">Person</span><span class="tok-p">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">age</span><span class="tok-w"> </span><span class="tok-o">&lt;</span><span class="tok-w"> </span><span class="tok-mi">50</span><span class="tok-p">).</span><span class="tok-n">values</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">)</span><span class="tok-w"></span>
+<span class="tok-w">  </span><span class="tok-p">.</span><span class="tok-n">aggregate</span><span class="tok-p">(</span><span class="tok-n">age_average</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-n">avg</span><span class="tok-p">(</span><span class="tok-n">age</span><span class="tok-p">))</span><span class="tok-w"></span>
+<span class="tok-w">  </span><span class="tok-p">.</span><span class="tok-n">filter</span><span class="tok-p">(</span><span class="tok-n">age_average</span><span class="tok-w"> </span><span class="tok-o">&gt;</span><span class="tok-w"> </span><span class="tok-mi">30</span><span class="tok-p">)</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -573,7 +587,7 @@ We can do even more complex queries with aggregates, for instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.get(id).update(done = true));</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">TodoItem</span><span class="tok-p">.</span><span class="tok-n">get</span><span class="tok-p">(</span><span class="tok-n">id</span><span class="tok-p">).</span><span class="tok-n">update</span><span class="tok-p">(</span><span class="tok-n">done</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-kc">true</span><span class="tok-p">));</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -584,7 +598,7 @@ We can do even more complex queries with aggregates, for instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.get(id).delete());</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">TodoItem</span><span class="tok-p">.</span><span class="tok-n">get</span><span class="tok-p">(</span><span class="tok-n">id</span><span class="tok-p">).</span><span class="tok-n">delete</span><span class="tok-p">());</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -592,7 +606,7 @@ We can do even more complex queries with aggregates, for instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="rust">sql!(TodoItem.insert(text = &amp;text, date_added = Utc::now(), done = false));</code></pre>
+<pre class="pygments highlight"><code data-lang="rust"><span></span><span class="tok-n">sql</span><span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">TodoItem</span><span class="tok-p">.</span><span class="tok-n">insert</span><span class="tok-p">(</span><span class="tok-n">text</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-o">&amp;</span><span class="tok-n">text</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-n">date_added</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-n">Utc</span><span class="tok-o">::</span><span class="tok-n">now</span><span class="tok-p">(),</span><span class="tok-w"> </span><span class="tok-n">done</span><span class="tok-w"> </span><span class="tok-o">=</span><span class="tok-w"> </span><span class="tok-kc">false</span><span class="tok-p">));</span><span class="tok-w"></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -609,7 +623,7 @@ For instance, here&#8217;s part of a message you can get when you do a type erro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
+<pre class="pygments highlight"><code>error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
   --&gt; src/main.rs:69:41
    |
 69 |         diesel::update(sql_table::table.find("id"))
@@ -631,7 +645,7 @@ For instance, here&#8217;s part of a message you can get when you do a type erro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>error: mismatched types:
+<pre class="pygments highlight"><code>error: mismatched types:
  expected `i32`,
     found `String`
   --&gt; src/main.rs:87:39
@@ -649,7 +663,7 @@ It can do that because the procedural macro is actually doing a whole semantic a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>error: `SlTable` does not name an SQL table
+<pre class="pygments highlight"><code>error: `SlTable` does not name an SQL table
   --&gt; src/main.rs:83:23
    |
 83 |         let id = sql!(SlTable.insert(field1 = &amp;string, field2 = number));
@@ -666,7 +680,7 @@ It can do that because the procedural macro is actually doing a whole semantic a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>warning: delete() without filters
+<pre class="pygments highlight"><code>warning: delete() without filters
   --&gt; examples/todo.rs:60:32
    |
 60 |     let result = sql!(TodoItem.delete());
@@ -709,6 +723,12 @@ Take note that <code>tql</code> is not ready for production use, it&#8217;s alph
 </div>
 </div>
 </div>
+		</article>
+	</div><!-- /.medium-12.columns -->
+</div><!-- /.row -->
+
+
+
 
         
             <div id="up-to-top" class="row">
@@ -726,7 +746,6 @@ Take note that <code>tql</code> is not ready for production use, it&#8217;s alph
 
             <p class="shadow-black">
               TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time
-              <a href="http://antoyo.github.io/tql-website/info/">More ›</a>
             </p>
           </div><!-- /.large-6.columns -->
 

@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>http://antoyo.github.io/tql-website/</id>
 	<title>TQL</title>
-	<updated>2017-12-22T21:02:51+00:00</updated>
+	<updated>2017-12-23T01:22:29+00:00</updated>
 
 	<subtitle>TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time</subtitle>
 
@@ -59,7 +59,7 @@ For instance, while in Django you&amp;#8217;d need something like this to use co
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;python&quot;&gt;Table.objects.filter(Q(field1=&lt;span style=&quot;background-color:hsla(0,100%,50%,0.05)&quot;&gt;&lt;span style=&quot;color:#710&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color:#D20&quot;&gt;value1&lt;/span&gt;&lt;span style=&quot;color:#710&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;) | Q(field2__lt=&lt;span style=&quot;color:#00D&quot;&gt;100&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field1&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-s2&quot;&gt;&amp;quot;value1&amp;quot;&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;tok-o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;tok-n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field2__lt&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -67,7 +67,7 @@ For instance, while in Django you&amp;#8217;d need something like this to use co
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;Table.filter(field1 == &amp;quot;value1&amp;quot; || field2 &amp;lt; 100)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field1&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-s&quot;&gt;&amp;quot;value1&amp;quot;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;||&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field2&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -84,7 +84,7 @@ Actually, the above code should be written inside a &lt;code&gt;sql!()&lt;/code&
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;let items = sql!(Table.filter(field1 == &amp;quot;value1&amp;quot; || field2 &amp;lt; 100));&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-kd&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Table&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field1&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-s&quot;&gt;&amp;quot;value1&amp;quot;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;||&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;field2&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -113,13 +113,13 @@ First of all, you need to annotate your model with the &lt;code&gt;#[derive(SqlT
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;#[derive(SqlTable)]
-struct TodoItem {
-    id: PrimaryKey,
-    text: String,
-    date_added: DateTime&amp;lt;Utc&amp;gt;,
-    done: bool,
-}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-cp&quot;&gt;#[derive(SqlTable)]&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;tok-nc&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;PrimaryKey&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;date_added&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Utc&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-kt&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -129,7 +129,7 @@ For instance, this will create the table in the database:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;sql!(TodoItem.create());&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -140,7 +140,7 @@ To do a &lt;code&gt;SELECT&lt;/code&gt; query, with &lt;code&gt;WHERE&lt;/code&g
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;let items = sql!(TodoItem.filter(done == false).sort(-date_added)[..10]);&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-kd&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;date_added&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)[..&lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;]);&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -150,9 +150,9 @@ We can do even more complex queries with aggregates, for instance:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;Person.filter(age &amp;lt; 50).values(name)
-  .aggregate(age_average = avg(age))
-  .filter(age_average &amp;gt; 30)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;aggregate&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;age_average&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;avg&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;tok-w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;age_average&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -163,7 +163,7 @@ We can do even more complex queries with aggregates, for instance:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;sql!(TodoItem.get(id).update(done = true));&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -174,7 +174,7 @@ We can do even more complex queries with aggregates, for instance:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;sql!(TodoItem.get(id).delete());&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -182,7 +182,7 @@ We can do even more complex queries with aggregates, for instance:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;sql!(TodoItem.insert(text = &amp;amp;text, date_added = Utc::now(), done = false));&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;date_added&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;Utc&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -199,7 +199,7 @@ For instance, here&amp;#8217;s part of a message you can get when you do a type 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code&gt;error[E0277]: the trait bound `str: diesel::Expression` is not satisfied
   --&amp;gt; src/main.rs:69:41
    |
 69 |         diesel::update(sql_table::table.find(&quot;id&quot;))
@@ -221,7 +221,7 @@ For instance, here&amp;#8217;s part of a message you can get when you do a type 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;error: mismatched types:
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code&gt;error: mismatched types:
  expected `i32`,
     found `String`
   --&amp;gt; src/main.rs:87:39
@@ -239,7 +239,7 @@ It can do that because the procedural macro is actually doing a whole semantic a
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;error: `SlTable` does not name an SQL table
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code&gt;error: `SlTable` does not name an SQL table
   --&amp;gt; src/main.rs:83:23
    |
 83 |         let id = sql!(SlTable.insert(field1 = &amp;amp;string, field2 = number));
@@ -256,7 +256,7 @@ It can do that because the procedural macro is actually doing a whole semantic a
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;warning: delete() without filters
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code&gt;warning: delete() without filters
   --&amp;gt; examples/todo.rs:60:32
    |
 60 |     let result = sql!(TodoItem.delete());

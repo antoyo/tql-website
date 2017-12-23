@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!-- Pages: 23 links with priority=0.3, changefreq=monthly -->
+<!-- Pages: 17 links with priority=0.3, changefreq=monthly -->
 
 	
 	<url>
 	<loc>http://antoyo.github.io/tql-website/404.html</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -22,7 +22,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/README/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -37,7 +37,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/blog/archive/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -54,7 +54,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/atom.xml</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -65,43 +65,13 @@
 	</url>
 	
 
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/changelog/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/design/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
 	
 
 	
 	<url>
 	<loc>http://antoyo.github.io/tql-website/documentation/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -116,7 +86,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/feed.xml</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -131,22 +101,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/getting-started/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/headers/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -161,7 +116,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/humans.txt</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -176,7 +131,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/blog/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -191,52 +146,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/info/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/redirect-page/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://antoyo.github.io/tql-website/roadmap/</loc>
-	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -251,7 +161,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/robots.txt</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -270,7 +180,7 @@
 	<url>
 	<loc>http://antoyo.github.io/tql-website/sitemap.xml</loc>
 	
-		<lastmod>2017-12-22T21:02:51+00:00</lastmod>
+		<lastmod>2017-12-23T01:22:29+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
