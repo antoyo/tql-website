@@ -9,5 +9,5 @@ group :jekyll_plugins do
 end
 
 gem 'asciidoctor', '~> 1.5.4'
-gem 'coderay', '1.1.1'
 gem 'rake-jekyll', '~> 1.1.0'
+gem 'pygments.rb', '~> 1.1.2'
