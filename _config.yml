@@ -22,7 +22,7 @@ author: antoyo
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
-url: 'http://antoyo.github.io'
+url: 'https://antoyo.github.io'
 baseurl: '/tql-website'
 
 # This URL points directly to the images directory making
