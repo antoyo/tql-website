@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://antoyo.github.io/tql-website/assets/xslt/rss.xslt" ?>
-<?xml-stylesheet type="text/css" href="http://antoyo.github.io/tql-website/assets/css/rss.css" ?>
+<?xml-stylesheet type="text/xsl" href="https://antoyo.github.io/tql-website/assets/xslt/rss.xslt" ?>
+<?xml-stylesheet type="text/css" href="https://antoyo.github.io/tql-website/assets/css/rss.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>TQL</title>
 		<description>TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time</description>
-		<link>http://antoyo.github.io/tql-website/</link>
-		<atom:link href="http://antoyo.github.io/tql-website/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://antoyo.github.io/tql-website/</link>
+		<atom:link href="https://antoyo.github.io/tql-website/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>TQL, an easy-to-use ORM for Rust</title>
-				<link>http://antoyo.github.io/tql-website/tql-easy-orm/</link>
+				<link>https://antoyo.github.io/tql-website/tql-easy-orm/</link>
 				<pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
 				<description>&lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
@@ -265,7 +265,7 @@ Take note that &lt;code&gt;tql&lt;/code&gt; is not ready for production use, it&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-				<guid isPermaLink="true">http://antoyo.github.io/tql-website/tql-easy-orm/</guid>
+				<guid isPermaLink="true">https://antoyo.github.io/tql-website/tql-easy-orm/</guid>
 			</item>
 		
 	</channel>
