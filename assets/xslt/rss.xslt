@@ -93,20 +93,6 @@
           
           
         
-
-              
-
-          
-          
-            
-            
-              <li class="divider"></li>
-              <li><a  href="http://tql-rs.ml/search/">Search</a></li>
-
-            
-            
-          
-        
         
       </ul>
 
@@ -181,12 +167,6 @@
               </li>
               <li class="divider"></li>
             
-          
-        
-
-              
-
-          
           
         
         
