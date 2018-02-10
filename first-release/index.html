@@ -86,6 +86,11 @@ While I could have kept the same syntax, it would have made the message in case 
 I might be able to support the former syntax in the future.
 
 
+Also, since tql was relying on a bug in the Rust compiler to make it work on stable and this bug is fixed in beta, I had to stop using this in order to have tql working on the next stable version of the compiler.
+That was quite difficult to workaround and resulted in yet another change:
+Now, when using tql on stable, you are required to specify the connection in the sql!() macro.
+
+
 
 
 Conclusion
@@ -370,6 +375,11 @@ While it was possible before to call <code>insert()</code> without <code>Some</c
 <div class="paragraph">
 <p>While I could have kept the same syntax, it would have made the message in case of error less understandable.
 I might be able to support the former syntax in the future.</p>
+</div>
+<div class="paragraph">
+<p>Also, since <code>tql</code> was relying on a <a href="https://github.com/rust-lang/rust/issues/46478">bug in the Rust compiler</a> to make it work on stable and this bug is fixed in beta, I had to stop using this in order to have <code>tql</code> working on the next stable version of the compiler.
+That was quite difficult to workaround and resulted in yet another change:
+Now, when using <code>tql</code> on stable, you are required to specify the connection in the <code>sql!()</code> macro.</p>
 </div>
 </div>
 </div>

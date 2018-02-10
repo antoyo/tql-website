@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>http://tql-rs.ml/</id>
 	<title>TQL</title>
-	<updated>2018-02-10T22:57:21+00:00</updated>
+	<updated>2018-02-10T23:06:22+00:00</updated>
 
 	<subtitle>TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time</subtitle>
 
@@ -125,6 +125,11 @@ While it was possible before to call &lt;code&gt;insert()&lt;/code&gt; without &
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;While I could have kept the same syntax, it would have made the message in case of error less understandable.
 I might be able to support the former syntax in the future.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Also, since &lt;code&gt;tql&lt;/code&gt; was relying on a &lt;a href=&quot;https://github.com/rust-lang/rust/issues/46478&quot;&gt;bug in the Rust compiler&lt;/a&gt; to make it work on stable and this bug is fixed in beta, I had to stop using this in order to have &lt;code&gt;tql&lt;/code&gt; working on the next stable version of the compiler.
+That was quite difficult to workaround and resulted in yet another change:
+Now, when using &lt;code&gt;tql&lt;/code&gt; on stable, you are required to specify the connection in the &lt;code&gt;sql!()&lt;/code&gt; macro.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
