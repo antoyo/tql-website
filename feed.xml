@@ -1,16 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://antoyo.github.io/tql-website/assets/xslt/rss.xslt" ?>
-<?xml-stylesheet type="text/css" href="https://antoyo.github.io/tql-website/assets/css/rss.css" ?>
+<?xml-stylesheet type="text/xsl" href="http://tql-rs.ml//assets/xslt/rss.xslt" ?>
+<?xml-stylesheet type="text/css" href="http://tql-rs.ml//assets/css/rss.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>TQL</title>
 		<description>TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time</description>
-		<link>https://antoyo.github.io/tql-website/</link>
-		<atom:link href="https://antoyo.github.io/tql-website/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://tql-rs.ml//</link>
+		<atom:link href="http://tql-rs.ml//feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>First release of TQL: the easy-to-use ORM for Rust</title>
+				<link>http://tql-rs.ml//first-release/</link>
+				<pubDate>Sat, 10 Feb 2018 00:00:00 +0000</pubDate>
+				<description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://tql-rs.ml/tql-easy-orm&quot;&gt;After a couple of weeks of work&lt;/a&gt;, I&amp;#8217;m now happy to release the first version of &lt;a href=&quot;https://github.com/antoyo/tql&quot;&gt;tql&lt;/a&gt;, the easy-to-use ORM for Rust.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;new-features&quot;&gt;New features&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While the focus was to make &lt;code&gt;tql&lt;/code&gt; work on the stable version of the compile, I also added some new features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;sqlite&quot;&gt;SQLite&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The most notable new feature is the new support for SQLite:
+now tql supports SQLite as well as PostgreSQL.
+The support for SQLite is almost as complete as the one for PostgreSQL:
+the only missing function is not implemented because the backend (SQLite) does not support it.
+I might implement it some day since I have a few ideas about how to workaround this issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;connection-management&quot;&gt;Connection Management&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, it is possible to specify the connection when using the &lt;code&gt;sql!()&lt;/code&gt; macro.
+That was possible before to switch to procedural macros and was removed by lack of time, but now it is back.
+Remember that by default, &lt;code&gt;sql!()&lt;/code&gt; will use the identifier &lt;code&gt;connection&lt;/code&gt; and try to execute the SQL query on the connection it represents.
+Now, it&amp;#8217;s possible to specify it as a first argument:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TodoItem&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;where &lt;code&gt;cx&lt;/code&gt; is the connection.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;error-handling&quot;&gt;Error handling&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I also improved the error handling of the generated code:
+now instead of using &lt;code&gt;expect()&lt;/code&gt;, all the errors will get to the caller of the &lt;code&gt;sql!()&lt;/code&gt; macro.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;design-issue&quot;&gt;Design issue&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I also fixed &lt;a href=&quot;https://github.com/antoyo/tql/issues/16&quot;&gt;a design issue&lt;/a&gt;, which took me a while to fix.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;bug-fix&quot;&gt;Bug fix&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There was a &lt;a href=&quot;https://github.com/antoyo/tql/issues/21&quot;&gt;bug with &lt;code&gt;Option&lt;/code&gt; values&lt;/a&gt; and now it is fixed.
+This resulted in a change a syntax.
+While it was possible before to call &lt;code&gt;insert()&lt;/code&gt; without &lt;code&gt;Some&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TableInsertExpr&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;optional_field&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;now, it is required:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;pygments highlight&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;TableInsertExpr&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-n&quot;&gt;optional_field&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;tok-nb&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;tok-mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;tok-p&quot;&gt;)));&lt;/span&gt;&lt;span class=&quot;tok-w&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While I could have kept the same syntax, it would have made the message in case of error less understandable.
+I might be able to support the former syntax in the future.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now it&amp;#8217;s time for you to test &lt;code&gt;tql&lt;/code&gt;, report bugs, suggest enhancements and start contributing!
+The library is still in very early stage, but I already use it in one of my projects, &lt;a href=&quot;https://github.com/antoyo/titanium&quot;&gt;titanium&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please comment on Reddit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+				<guid isPermaLink="true">http://tql-rs.ml//first-release/</guid>
+			</item>
 		
 			<item>
 				<title>TQL, an easy-to-use ORM for Rust</title>
-				<link>https://antoyo.github.io/tql-website/tql-easy-orm/</link>
+				<link>http://tql-rs.ml//tql-easy-orm/</link>
 				<pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
 				<description>&lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
@@ -265,7 +366,7 @@ Take note that &lt;code&gt;tql&lt;/code&gt; is not ready for production use, it&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-				<guid isPermaLink="true">https://antoyo.github.io/tql-website/tql-easy-orm/</guid>
+				<guid isPermaLink="true">http://tql-rs.ml//tql-easy-orm/</guid>
 			</item>
 		
 	</channel>

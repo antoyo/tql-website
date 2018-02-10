@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://antoyo.github.io/tql-website/sitemap.xml
+Sitemap: http://tql-rs.ml//sitemap.xml
