@@ -6,12 +6,12 @@ http://tql-rs.ml/tql-easy-orm[After a couple of weeks of work], I'm now happy to
 
 == New features
 
-While the focus was to make `tql` work on the stable version of the compile, I also added some new features.
+While the focus was to make `tql` work on the stable version of the compiler, I also added some new features.
 
 === SQLite
 
-The most notable new feature is the new support for SQLite:
-now tql supports SQLite as well as PostgreSQL.
+The most notable new feature is the support for SQLite:
+now `tql` supports SQLite as well as PostgreSQL.
 The support for SQLite is almost as complete as the one for PostgreSQL:
 the only missing function is not implemented because the backend (SQLite) does not support it.
 I might implement it some day since I have a few ideas about how to workaround this issue.
