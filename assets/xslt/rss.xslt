@@ -10,16 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS Feed (Styled)</title>
 
-    <link rel="stylesheet" type="text/css" href="http://tql-rs.ml//assets/css/styles_feeling_responsive.css">
+    <link rel="stylesheet" type="text/css" href="http://tql-rs.ml/assets/css/styles_feeling_responsive.css">
 
     <!-- Search Engine Optimization -->
     <meta name="description" content="TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time">
     
-    <link rel="canonical" href="http://tql-rs.ml//assets/xslt/rss.xslt">
+    <link rel="canonical" href="http://tql-rs.ml/assets/xslt/rss.xslt">
 
-    <link rel="stylesheet" href="//css/asciidoc-pygments.css">
+    <link rel="stylesheet" href="/css/asciidoc-pygments.css">
 
-    <link type="text/plain" rel="author" href="http://tql-rs.ml//humans.txt">
+    <link type="text/plain" rel="author" href="http://tql-rs.ml/humans.txt">
 
     
 
@@ -60,7 +60,7 @@
   <nav class="top-bar" role="navigation" data-topbar>
     <ul class="title-area">
       <li class="name">
-      <h1 class="show-for-small-only"><a href="http://tql-rs.ml/" class="icon-tree"> TQL</a></h1>
+      <h1 class="show-for-small-only"><a href="http://tql-rs.ml" class="icon-tree"> TQL</a></h1>
     </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Nav</span></a></li>
@@ -101,7 +101,7 @@
             
             
               <li class="divider"></li>
-              <li><a  href="http://tql-rs.ml//search/">Search</a></li>
+              <li><a  href="http://tql-rs.ml/search/">Search</a></li>
 
             
             
@@ -120,7 +120,7 @@
 
             
             
-              <li><a  href="http://tql-rs.ml//">Index</a></li>
+              <li><a  href="http://tql-rs.ml/">Index</a></li>
               <li class="divider"></li>
 
             
@@ -135,7 +135,7 @@
 
             
             
-              <li><a  href="http://tql-rs.ml//getting-started/">Getting Started</a></li>
+              <li><a  href="http://tql-rs.ml/getting-started/">Getting Started</a></li>
               <li class="divider"></li>
 
             
@@ -150,7 +150,7 @@
 
             
             
-              <li><a  href="http://tql-rs.ml//documentation/">Documentation</a></li>
+              <li><a  href="http://tql-rs.ml/documentation/">Documentation</a></li>
               <li class="divider"></li>
 
             
@@ -167,14 +167,14 @@
             
 
               <li class="has-dropdown">
-                <a  href="http://tql-rs.ml//blog/">Blog</a>
+                <a  href="http://tql-rs.ml/blog/">Blog</a>
 
                   <ul class="dropdown">
                     
 
                       
 
-                      <li><a  href="http://tql-rs.ml//blog/archive/">Blog Archive</a></li>
+                      <li><a  href="http://tql-rs.ml/blog/archive/">Blog Archive</a></li>
                     
                   </ul>
 
@@ -201,7 +201,7 @@
     <div class="row">
         <div class="small-12 columns">
             <a id="logo" href="http://tql-rs.ml/" title="TQL – An easy-to-use ORM from Rust">
-                <img src="http://tql-rs.ml//assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
+                <img src="http://tql-rs.ml/assets/img/logo.png" alt="TQL – An easy-to-use ORM from Rust">
             </a>
         </div><!-- /.small-12.columns -->
     </div><!-- /.row -->
@@ -299,17 +299,17 @@
               
                 
                   <li >
-                    <a href="http://tql-rs.ml/"  title=""></a>
+                    <a href="http://tql-rs.ml"  title=""></a>
                   </li>
               
                 
                   <li >
-                    <a href="http://tql-rs.ml//feed.xml"  title="Subscribe to RSS Feed">RSS</a>
+                    <a href="http://tql-rs.ml/feed.xml"  title="Subscribe to RSS Feed">RSS</a>
                   </li>
               
                 
                   <li >
-                    <a href="http://tql-rs.ml//atom.xml"  title="Subscribe to Atom Feed">Atom</a>
+                    <a href="http://tql-rs.ml/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
                   </li>
               
               </ul>
@@ -331,7 +331,7 @@
             
               
                 <li >
-                  <a href="http://tql-rs.ml/"  title=""></a>
+                  <a href="http://tql-rs.ml"  title=""></a>
                 </li>
             
               

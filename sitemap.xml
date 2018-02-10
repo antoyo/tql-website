@@ -5,24 +5,9 @@
 
 	
 	<url>
-	<loc>http://tql-rs.ml//404.html</loc>
+	<loc>http://tql-rs.ml/404.html</loc>
 	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//README/</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -35,9 +20,9 @@
 
 	
 	<url>
-	<loc>http://tql-rs.ml//blog/archive/</loc>
+	<loc>http://tql-rs.ml/README/</loc>
 	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -49,12 +34,10 @@
 	
 
 	
-
-	
 	<url>
-	<loc>http://tql-rs.ml//atom.xml</loc>
+	<loc>http://tql-rs.ml/blog/archive/</loc>
 	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -69,99 +52,9 @@
 
 	
 	<url>
-	<loc>http://tql-rs.ml//documentation/</loc>
+	<loc>http://tql-rs.ml/atom.xml</loc>
 	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//feed.xml</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//getting-started/</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//humans.txt</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//blog/</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
-	
-	
-		<changefreq>monthly</changefreq>
-	
-	
-		<priority>0.3</priority>
-	
-	</url>
-	
-
-	
-	<url>
-	<loc>http://tql-rs.ml//robots.txt</loc>
-	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -175,12 +68,119 @@
 	
 
 	
+	<url>
+	<loc>http://tql-rs.ml/documentation/</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
 
 	
 	<url>
-	<loc>http://tql-rs.ml//sitemap.xml</loc>
+	<loc>http://tql-rs.ml/feed.xml</loc>
 	
-		<lastmod>2018-02-10T21:56:51+00:00</lastmod>
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/getting-started/</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/humans.txt</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/blog/</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/robots.txt</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
+	
+	
+		<changefreq>monthly</changefreq>
+	
+	
+		<priority>0.3</priority>
+	
+	</url>
+	
+
+	
+
+	
+
+	
+	<url>
+	<loc>http://tql-rs.ml/sitemap.xml</loc>
+	
+		<lastmod>2018-02-10T22:31:05+00:00</lastmod>
 	
 	
 		<changefreq>monthly</changefreq>
@@ -198,7 +198,7 @@
 
 	
 	<url>
-	<loc>http://tql-rs.ml//first-release/</loc>
+	<loc>http://tql-rs.ml/first-release/</loc>
 	
 		<lastmod>2018-02-10T00:00:00+00:00</lastmod>
 	
@@ -213,7 +213,7 @@
 
 	
 	<url>
-	<loc>http://tql-rs.ml//tql-easy-orm/</loc>
+	<loc>http://tql-rs.ml/tql-easy-orm/</loc>
 	
 		<lastmod>2017-12-11T00:00:00+00:00</lastmod>
 	
