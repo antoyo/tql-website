@@ -23,13 +23,13 @@
 &lt;h2 id=&quot;new-features&quot;&gt;New features&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While the focus was to make &lt;code&gt;tql&lt;/code&gt; work on the stable version of the compile, I also added some new features.&lt;/p&gt;
+&lt;p&gt;While the focus was to make &lt;code&gt;tql&lt;/code&gt; work on the stable version of the compiler, I also added some new features.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
 &lt;h3 id=&quot;sqlite&quot;&gt;SQLite&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The most notable new feature is the new support for SQLite:
-now tql supports SQLite as well as PostgreSQL.
+&lt;p&gt;The most notable new feature is the support for SQLite:
+now &lt;code&gt;tql&lt;/code&gt; supports SQLite as well as PostgreSQL.
 The support for SQLite is almost as complete as the one for PostgreSQL:
 the only missing function is not implemented because the backend (SQLite) does not support it.
 I might implement it some day since I have a few ideas about how to workaround this issue.&lt;/p&gt;
