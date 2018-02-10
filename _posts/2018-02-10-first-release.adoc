@@ -1,0 +1,64 @@
+= First release of TQL: the easy-to-use ORM for Rust
+:page-navtitle: First release of TQL: the easy-to-use ORM for Rust
+:page-layout: page-fullwidth
+
+http://tql-rs.ml/tql-easy-orm[After a couple of weeks of work], I'm now happy to release the first version of https://github.com/antoyo/tql[tql], the easy-to-use ORM for Rust.
+
+== New features
+
+While the focus was to make `tql` work on the stable version of the compile, I also added some new features.
+
+=== SQLite
+
+The most notable new feature is the new support for SQLite:
+now tql supports SQLite as well as PostgreSQL.
+The support for SQLite is almost as complete as the one for PostgreSQL:
+the only missing function is not implemented because the backend (SQLite) does not support it.
+I might implement it some day since I have a few ideas about how to workaround this issue.
+
+=== Connection Management
+
+Now, it is possible to specify the connection when using the `sql!()` macro.
+That was possible before to switch to procedural macros and was removed by lack of time, but now it is back.
+Remember that by default, `sql!()` will use the identifier `connection` and try to execute the SQL query on the connection it represents.
+Now, it's possible to specify it as a first argument:
+
+[source,rust]
+----
+sql!(cx, TodoItem.get(id).update(done = true))
+----
+
+where `cx` is the connection.
+
+=== Error handling
+
+I also improved the error handling of the generated code:
+now instead of using `expect()`, all the errors will get to the caller of the `sql!()` macro.
+
+=== Design issue
+
+I also fixed https://github.com/antoyo/tql/issues/16[a design issue], which took me a while to fix.
+
+== Bug fix
+
+There was a https://github.com/antoyo/tql/issues/21[bug with `Option` values] and now it is fixed.
+This resulted in a change a syntax.
+While it was possible before to call `insert()` without `Some`:
+[source,rust]
+----
+sql!(TableInsertExpr.insert(optional_field = 12));
+----
+now, it is required:
+[source,rust]
+----
+sql!(TableInsertExpr.insert(optional_field = Some(12)));
+----
+While I could have kept the same syntax, it would have made the message in case of error less understandable.
+I might be able to support the former syntax in the future.
+
+== Conclusion
+
+Now it's time for you to test `tql`, report bugs, suggest enhancements and start contributing!
+The library is still in very early stage, but I already use it in one of my projects, https://github.com/antoyo/titanium[titanium].
+
+Please comment on Reddit.
