@@ -56,6 +56,10 @@ sql!(TableInsertExpr.insert(optional_field = Some(12)));
 While I could have kept the same syntax, it would have made the message in case of error less understandable.
 I might be able to support the former syntax in the future.
 
+Also, since `tql` was relying on a https://github.com/rust-lang/rust/issues/46478[bug in the Rust compiler] to make it work on stable and this bug is fixed in beta, I had to stop using this in order to have `tql` working on the next stable version of the compiler.
+That was quite difficult to workaround and resulted in yet another change:
+Now, when using `tql` on stable, you are required to specify the connection in the `sql!()` macro.
+
 == Conclusion
 
 Now it's time for you to test `tql`, report bugs, suggest enhancements and start contributing!
