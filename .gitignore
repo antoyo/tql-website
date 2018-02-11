@@ -4,3 +4,5 @@
 /tmp/
 *.bundle
 Gemfile.lock
+.sass-cache/
+pages/pages-root-folder/index.adoc
