@@ -1,6 +1,7 @@
 = First release of TQL: the easy-to-use ORM for Rust
 :page-navtitle: First release of TQL: the easy-to-use ORM for Rust
 :page-layout: page-fullwidth
+:page-liquid:
 
 link:{{ site.baseurl }}/tql-easy-orm[After a couple of weeks of work], I'm now happy to release the first version of https://github.com/antoyo/tql[tql], the easy-to-use ORM for Rust.
 
