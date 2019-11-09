@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://tql-rs.ml/assets/xslt/rss.xslt" ?>
-<?xml-stylesheet type="text/css" href="http://tql-rs.ml/assets/css/rss.css" ?>
+<?xml-stylesheet type="text/xsl" href="https://tql.antoyo.xyz/assets/xslt/rss.xslt" ?>
+<?xml-stylesheet type="text/css" href="https://tql.antoyo.xyz/assets/css/rss.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>TQL</title>
 		<description>TQL is a Rust ORM that is easy to use, checks the validity and generate your queries at compile-time</description>
-		<link>http://tql-rs.ml/</link>
-		<atom:link href="http://tql-rs.ml/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://tql.antoyo.xyz/</link>
+		<atom:link href="https://tql.antoyo.xyz/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>First release of TQL: the easy-to-use ORM for Rust</title>
-				<link>http://tql-rs.ml/first-release/</link>
+				<link>https://tql.antoyo.xyz/first-release/</link>
 				<pubDate>Sat, 10 Feb 2018 00:00:00 +0000</pubDate>
 				<description>&lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;http://tql-rs.ml/tql-easy-orm&quot;&gt;After a couple of weeks of work&lt;/a&gt;, I&amp;#8217;m now happy to release the first version of &lt;a href=&quot;https://github.com/antoyo/tql&quot;&gt;tql&lt;/a&gt;, the easy-to-use ORM for Rust.&lt;/p&gt;
+&lt;p&gt;link:{{ site.baseurl }}/tql-easy-orm[After a couple of weeks of work], I&amp;#8217;m now happy to release the first version of &lt;a href=&quot;https://github.com/antoyo/tql&quot;&gt;tql&lt;/a&gt;, the easy-to-use ORM for Rust.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -111,12 +111,12 @@ The library is still in very early stage, but I already use it in one of my proj
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-				<guid isPermaLink="true">http://tql-rs.ml/first-release/</guid>
+				<guid isPermaLink="true">https://tql.antoyo.xyz/first-release/</guid>
 			</item>
 		
 			<item>
 				<title>TQL, an easy-to-use ORM for Rust</title>
-				<link>http://tql-rs.ml/tql-easy-orm/</link>
+				<link>https://tql.antoyo.xyz/tql-easy-orm/</link>
 				<pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
 				<description>&lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
@@ -371,7 +371,7 @@ Take note that &lt;code&gt;tql&lt;/code&gt; is not ready for production use, it&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-				<guid isPermaLink="true">http://tql-rs.ml/tql-easy-orm/</guid>
+				<guid isPermaLink="true">https://tql.antoyo.xyz/tql-easy-orm/</guid>
 			</item>
 		
 	</channel>
